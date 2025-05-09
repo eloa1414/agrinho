@@ -1,0 +1,13 @@
+<div id="campo">
+    <label for="producao-leite">
+        <div class="elemento-campo leite">Produção de Leite</div>
+        <input type="checkbox" id="producao-leite">
+    </label>
+    </div>
+
+<div id="cidade">
+    <div class="elemento-cidade mercado">Mercado</div>
+    </div>
+
+<div class="conexao leite-para-cidade">
+    </div>
