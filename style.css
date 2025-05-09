@@ -1,13 +1,83 @@
-<div id="campo">
-    <label for="producao-leite">
-        <div class="elemento-campo leite">Produção de Leite</div>
-        <input type="checkbox" id="producao-leite">
-    </label>
-    </div>
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+    margin: 20px;
+}
 
-<div id="cidade">
-    <div class="elemento-cidade mercado">Mercado</div>
-    </div>
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
 
-<div class="conexao leite-para-cidade">
-    </div>
+.tabuleiro {
+    display: grid;
+    grid-template-columns: repeat(4, 100px); /* 4 colunas */
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.carta {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    user-select: none;
+    transition: transform 0.3s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.carta.virada {
+    transform: rotateY(180deg);
+    background-color: #fff;
+    border-color: #aaa;
+}
+
+.carta-conteudo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+}
+
+.carta-frente {
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+.carta-verso {
+    transform: rotateY(180deg);
+}
+
+.controles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#reset {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    margin-top: 10px;
+}
+
+#tentativas {
+    font-weight: bold;
+}
