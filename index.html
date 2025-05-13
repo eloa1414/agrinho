@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combine Campo-Cidade</title>
+    <title>Aventura na Fazenda Sustentável</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Combine os Pares Campo-Cidade</h1>
-    <div class="tabuleiro">
+    <div id="jogo-container">
+        <div id="mapa">
+            <div id="personagem"></div>
+            </div>
+        <div id="info-box" class="escondido">
+            <h2 id="info-titulo"></h2>
+            <p id="info-texto"></p>
+            <button id="fechar-info">Fechar</button>
         </div>
-    <div class="controles">
-        <p>Tentativas: <span id="tentativas">0</span></p>
-        <button id="reset">Recomeçar</button>
     </div>
     <script src="script.js"></script>
 </body>
