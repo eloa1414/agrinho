@@ -1,83 +1,91 @@
 body {
     font-family: sans-serif;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f4f4f4;
-    margin: 20px;
-}
-
-h1 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.tabuleiro {
-    display: grid;
-    grid-template-columns: repeat(4, 100px); /* 4 colunas */
-    grid-gap: 10px;
-    margin-bottom: 20px;
-}
-
-.carta {
-    width: 100px;
-    height: 100px;
-    background-color: #ddd;
-    border: 1px solid #ccc;
-    display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    user-select: none;
-    transition: transform 0.3s ease-in-out;
-    transform-style: preserve-3d;
+    min-height: 100vh;
+    background-color: #f0f8f0; /* Verde claro */
+    margin: 0;
 }
 
-.carta.virada {
-    transform: rotateY(180deg);
-    background-color: #fff;
-    border-color: #aaa;
+#jogo-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    border: 2px solid #8fbc8f; /* Verde musgo */
+    overflow: hidden;
+    background-image: url('grama.jpg'); /* Substitua pelo caminho da sua imagem de grama */
+    background-size: cover;
 }
 
-.carta-conteudo {
+#mapa {
     position: absolute;
     width: 100%;
     height: 100%;
+    /* O mapa pode ser maior que o container para permitir "scrolling" */
+}
+
+#personagem {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    border-radius: 50%;
+    /* Posição inicial do personagem */
+    left: 50px;
+    top: 50px;
+    z-index: 10; /* Para ficar acima dos outros elementos */
+}
+
+.elemento-interativo {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    backface-visibility: hidden;
-}
-
-.carta-frente {
-    background-color: #eee;
+    font-size: 1.2em;
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.carta-verso {
-    transform: rotateY(180deg);
+.animal {
+    /* Estilos específicos para animais */
+    background-color: #d2b48c; /* Marrom claro */
 }
 
-.controles {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.plantacao {
+    /* Estilos específicos para plantações */
+    background-color: #556b2f; /* Verde oliva escuro */
+    color: white;
 }
 
-#reset {
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 5px;
-    border: none;
+#info-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    z-index: 20;
+    text-align: center;
+}
+
+#info-box.escondido {
+    display: none;
+}
+
+#fechar-info {
+    padding: 8px 15px;
     background-color: #007bff;
     color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     margin-top: 10px;
-}
-
-#tentativas {
-    font-weight: bold;
 }
