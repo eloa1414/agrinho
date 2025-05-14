@@ -30,6 +30,11 @@
         <button onclick="enterFarm()">Próximo</button>
     </div>
 
+    <!-- Tela de Carregamento -->
+    <div id="screen-loading" class="screen" style="display:none;">
+        <h2>Carregando...</h2>
+    </div>
+
     <!-- Fazenda -->
     <div id="screen-farm" class="screen" style="display:none;">
         <h2>Bem-vindo à Fazenda, <span id="player-name-display">Jogador</span></h2>
@@ -49,6 +54,9 @@
             </div>
             <div class="cercado" id="plantacao" onclick="startMiniGame('plantacao')">
                 <p>? Plantação</p>
+            </div>
+            <div class="cercado" id="porcos" onclick="startMiniGame('porcos')">
+                <p>? Porcos</p>
             </div>
         </div>
     </div>
@@ -81,9 +89,9 @@
     <!-- Mini-game Vaca -->
     <div id="mini-game-vaca" class="mini-game" style="display:none;">
         <h2>Mini-game da Vaca</h2>
-        <p>Clique nas tetas da vaca para ordenhar.</p>
-        <div id="ordenha">
-            <img src="temp_vaca.png" id="vaca-tetas" onclick="ordenharTeta()">
+        <p>Clique nas tetas para ordenhar a vaca.</p>
+        <div id="area-vaca">
+            <img src="temp_vaca.png" class="teta" onclick="ordenhar()">
         </div>
         <p id="status-vaca">Leite coletado: 0</p>
         <button id="next-vaca" onclick="fecharMiniGame('vaca')" style="display: none;">Próximo</button>
@@ -91,12 +99,9 @@
 
     <!-- Mini-game Peixe -->
     <div id="mini-game-peixe" class="mini-game" style="display:none;">
-        <h2>Mini-game de Pesca</h2>
-        <p>Clique na vara de pesca e depois em "Puxe" quando o peixe aparecer.</p>
-        <div id="pesca-area">
-            <img src="temp_vara.png" onclick="baixarLinha()">
-            <button id="botao-puxe" onclick="puxarLinha()" disabled>Puxe</button>
-        </div>
+        <h2>Mini-game da Pesca</h2>
+        <p>Clique na vara e depois no botão "Puxe" para pescar.</p>
+        <button onclick="pescarPeixe()">Puxe</button>
         <p id="status-peixe">Peixes coletados: 0</p>
         <button id="next-peixe" onclick="fecharMiniGame('peixe')" style="display: none;">Próximo</button>
     </div>
@@ -104,15 +109,23 @@
     <!-- Mini-game Plantação -->
     <div id="mini-game-plantacao" class="mini-game" style="display:none;">
         <h2>Mini-game da Plantação</h2>
-        <p>Arraste sementes para a terra e clique para colher quando crescerem.</p>
-        <div id="area-plantacao">
-            <div class="sementes">
-                <img src="temp_semente1.png" class="semente" draggable="true" ondragstart="drag(event)">
-            </div>
-            <div class="terra" ondrop="plantar(event)" ondragover="allowDrop(event)"></div>
+        <p>Escolha uma semente e clique para plantar.</p>
+        <div id="sementes">
+            <button onclick="plantar('milho')">Milho</button>
+            <button onclick="plantar('trigo')">Trigo</button>
         </div>
-        <p id="status-plantacao">Plantas colhidas: 0</p>
+        <div id="campo-plantado"></div>
+        <p id="status-plantacao">Itens colhidos: 0</p>
         <button id="next-plantacao" onclick="fecharMiniGame('plantacao')" style="display: none;">Próximo</button>
+    </div>
+
+    <!-- Mini-game Porcos -->
+    <div id="mini-game-porcos" class="mini-game" style="display:none;">
+        <h2>Mini-game dos Porcos</h2>
+        <p>Clique no comedouro para alimentar os porcos.</p>
+        <button onclick="alimentarPorcos()">Alimentar</button>
+        <p id="status-porcos">Porcos alimentados: 0</p>
+        <button id="next-porcos" onclick="fecharMiniGame('porcos')" style="display: none;">Próximo</button>
     </div>
 
     <script src="script.js"></script>
