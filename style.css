@@ -1,91 +1,67 @@
 body {
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f8f0; /* Verde claro */
-    margin: 0;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(#dfffd6, #a0e0a9);
+  overflow: hidden;
 }
 
-#jogo-container {
-    position: relative;
-    width: 800px;
-    height: 600px;
-    border: 2px solid #8fbc8f; /* Verde musgo */
-    overflow: hidden;
-    background-image: url('grama.jpg'); /* Substitua pelo caminho da sua imagem de grama */
-    background-size: cover;
+header {
+  text-align: center;
+  background-color: #4caf50;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#mapa {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    /* O mapa pode ser maior que o container para permitir "scrolling" */
+main {
+  position: relative;
+  width: 100%;
+  height: 90vh;
 }
 
-#personagem {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: blue;
-    border-radius: 50%;
-    /* Posição inicial do personagem */
-    left: 50px;
-    top: 50px;
-    z-index: 10; /* Para ficar acima dos outros elementos */
+#game-area, #cidade-area {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('img/background/fazenda.png') center/cover no-repeat;
+  overflow: hidden;
 }
 
-.elemento-interativo {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+#cidade-area {
+  display: none;
+  background: url('img/background/cidade.png') center/cover no-repeat;
 }
 
-.animal {
-    /* Estilos específicos para animais */
-    background-color: #d2b48c; /* Marrom claro */
+#player {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  width: 60px;
+  transition: 0.1s linear;
+  image-rendering: pixelated;
+  z-index: 10;
 }
 
-.plantacao {
-    /* Estilos específicos para plantações */
-    background-color: #556b2f; /* Verde oliva escuro */
-    color: white;
+.interactable {
+  position: absolute;
+  width: 80px;
+  cursor: pointer;
+  image-rendering: pixelated;
 }
 
-#info-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    z-index: 20;
-    text-align: center;
-}
-
-#info-box.escondido {
-    display: none;
-}
-
-#fechar-info {
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
+#dialogo {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffffcc;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  display: none;
+  max-width: 80%;
+  text-align: center;
+  z-index: 20;
 }
