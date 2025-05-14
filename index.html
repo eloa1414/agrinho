@@ -1,34 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fazenda Sustentável</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raízes do Campo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Fazenda Sustentável</h1>
-    <p>Explore, clique e aprenda com o personagem da fazenda!</p>
-  </header>
-
-  <main>
-    <div id="game-area">
-      <img id="player" src="img/player/idle_down_1.png" alt="Personagem" />
-      <img class="interactable" data-message="Sou uma vaca feliz e produzo leite sustentável!" style="top: 100px; left: 300px;" src="img/animais/vaca_1.png" />
-      <img class="interactable" data-message="Aqui temos uma plantação orgânica sem agrotóxicos!" style="top: 250px; left: 600px;" src="img/plantacoes/milho_1.png" />
-      <img id="carro" class="interactable" data-message="Vamos para a cidade conhecer mais sobre essa conexão!" style="top: 400px; left: 900px;" src="img/veiculos/carro_1.png" />
+    <!-- Tela Inicial -->
+    <div id="tela-inicial" class="tela">
+        <h1>Raízes do Campo</h1>
+        <button id="btn-play" class="botao">Play</button>
     </div>
 
-    <div id="cidade-area">
-      <img class="interactable" data-message="Na cidade, os produtos da fazenda abastecem supermercados e restaurantes!" style="top: 100px; left: 300px;" src="img/cidade/mercado.png" />
-      <img class="interactable" data-message="Muitas famílias da cidade compram diretamente de produtores rurais." style="top: 250px; left: 600px;" src="img/cidade/feira.png" />
+    <!-- Tela de Escolha de Personagem -->
+    <div id="tela-personagem" class="tela escondido">
+        <h2>Escolha seu Personagem</h2>
+        <div class="personagens">
+            <div class="personagem" data-genero="Homem">
+                <img src="homem.png" alt="Homem">
+            </div>
+            <div class="personagem" data-genero="Mulher">
+                <img src="mulher.png" alt="Mulher">
+            </div>
+        </div>
+        <input type="text" id="nick" placeholder="Digite seu nome" />
+        <div class="botoes">
+            <button id="btn-voltar" class="botao">Voltar</button>
+            <button id="btn-proximo" class="botao">Próximo</button>
+        </div>
     </div>
 
-    <div id="dialogo"></div>
-  </main>
+    <!-- Tela de Carregamento -->
+    <div id="tela-carregando" class="escondido">
+        <h1>Carregando...</h1>
+    </div>
 
-  <script src="script.js"></script>
+    <!-- Tela do Jogo -->
+    <div id="tela-jogo" class="tela escondido">
+        <div id="mapa">
+            <!-- Fazenda -->
+            <div id="celeiro"></div>
+            <div id="cercado-vacas"></div>
+            <div id="cercado-ovelhas"></div>
+            <div id="cercado-porcos"></div>
+            <div id="cercado-galinhas"></div>
+            <div id="plantacao"></div>
+
+            <!-- Personagem -->
+            <div id="personagem" class="personagem-jogo"></div>
+
+            <!-- Caminhonete -->
+            <div id="caminhonete"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
