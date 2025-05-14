@@ -4,56 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raízes do Campo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Tela Inicial -->
-    <div id="tela-inicial" class="tela">
-        <h1>Raízes do Campo</h1>
-        <button id="btn-play" class="botao">Play</button>
+    <div id="screen-intro" class="screen">
+        <h1 id="game-title">Raízes do Campo</h1>
+        <button onclick="startGame()">Play</button>
     </div>
 
-    <!-- Tela de Escolha de Personagem -->
-    <div id="tela-personagem" class="tela escondido">
-        <h2>Escolha seu Personagem</h2>
-        <div class="personagens">
-            <div class="personagem" data-genero="Homem">
-                <img src="homem.png" alt="Homem">
+    <!-- Escolha de Personagem -->
+    <div id="screen-character" class="screen" style="display:none;">
+        <h2>Escolha seu personagem</h2>
+        <div id="characters">
+            <div class="character" onclick="selectCharacter('homem')">
+                <img src="temp_homem.png" alt="Homem">
+                <p>Homem</p>
             </div>
-            <div class="personagem" data-genero="Mulher">
-                <img src="mulher.png" alt="Mulher">
+            <div class="character" onclick="selectCharacter('mulher')">
+                <img src="temp_mulher.png" alt="Mulher">
+                <p>Mulher</p>
             </div>
         </div>
-        <input type="text" id="nick" placeholder="Digite seu nome" />
-        <div class="botoes">
-            <button id="btn-voltar" class="botao">Voltar</button>
-            <button id="btn-proximo" class="botao">Próximo</button>
+        <input type="text" id="player-name" placeholder="Digite seu nome" />
+        <button onclick="enterFarm()">Próximo</button>
+    </div>
+
+    <!-- Fazenda -->
+    <div id="screen-farm" class="screen" style="display:none;">
+        <h2>Bem-vindo à Fazenda, <span id="player-name-display">Jogador</span></h2>
+        <p>Toque nos pontos de interrogação para interagir com os cercados.</p>
+        <div id="farm">
+            <div class="cercado" id="galinha" onclick="startMiniGame('galinha')">
+                <p>? Galinha</p>
+            </div>
+            <div class="cercado" id="ovelha" onclick="startMiniGame('ovelha')">
+                <p>? Ovelha</p>
+            </div>
+            <div class="cercado" id="vaca" onclick="startMiniGame('vaca')">
+                <p>? Vaca</p>
+            </div>
+            <div class="cercado" id="peixe" onclick="startMiniGame('peixe')">
+                <p>? Peixe</p>
+            </div>
+            <div class="cercado" id="plantacao" onclick="startMiniGame('plantacao')">
+                <p>? Plantação</p>
+            </div>
         </div>
     </div>
 
-    <!-- Tela de Carregamento -->
-    <div id="tela-carregando" class="escondido">
-        <h1>Carregando...</h1>
+    <!-- Mini-game Galinha -->
+    <div id="mini-game-galinha" class="mini-game" style="display:none;">
+        <h2>Mini-game da Galinha</h2>
+        <p>Clique nos ninhos para coletar os ovos!</p>
+        <div id="ninhos">
+            <img src="temp_ninho1.png" class="ninho" onclick="coletarOvo()">
+            <img src="temp_ninho2.png" class="ninho" onclick="coletarOvo()">
+            <img src="temp_ninho3.png" class="ninho" onclick="coletarOvo()">
+        </div>
+        <p id="status-galinha">Ovos coletados: 0</p>
+        <button id="next-galinha" onclick="fecharMiniGame('galinha')" style="display: none;">Próximo</button>
     </div>
 
-    <!-- Tela do Jogo -->
-    <div id="tela-jogo" class="tela escondido">
-        <div id="mapa">
-            <!-- Fazenda -->
-            <div id="celeiro"></div>
-            <div id="cercado-vacas"></div>
-            <div id="cercado-ovelhas"></div>
-            <div id="cercado-porcos"></div>
-            <div id="cercado-galinhas"></div>
-            <div id="plantacao"></div>
-
-            <!-- Personagem -->
-            <div id="personagem" class="personagem-jogo"></div>
-
-            <!-- Caminhonete -->
-            <div id="caminhonete"></div>
+    <!-- Mini-game Ovelha -->
+    <div id="mini-game-ovelha" class="mini-game" style="display:none;">
+        <h2>Mini-game da Ovelha</h2>
+        <p>Arraste a tesoura até a ovelha para tosquiar.</p>
+        <div id="area-ovelha">
+            <img src="temp_tesoura.png" id="tesoura" draggable="true" ondragstart="drag(event)">
+            <img src="temp_ovelha.png" id="ovelha-img" ondrop="drop(event)" ondragover="allowDrop(event)">
         </div>
+        <p id="status-ovelha">Lã coletada: 0</p>
+        <button id="next-ovelha" onclick="fecharMiniGame('ovelha')" style="display: none;">Próximo</button>
+    </div>
+
+    <!-- Mini-game Vaca -->
+    <div id="mini-game-vaca" class="mini-game" style="display:none;">
+        <h2>Mini-game da Vaca</h2>
+        <p>Clique nas tetas da vaca para ordenhar.</p>
+        <div id="ordenha">
+            <img src="temp_vaca.png" id="vaca-tetas" onclick="ordenharTeta()">
+        </div>
+        <p id="status-vaca">Leite coletado: 0</p>
+        <button id="next-vaca" onclick="fecharMiniGame('vaca')" style="display: none;">Próximo</button>
+    </div>
+
+    <!-- Mini-game Peixe -->
+    <div id="mini-game-peixe" class="mini-game" style="display:none;">
+        <h2>Mini-game de Pesca</h2>
+        <p>Clique na vara de pesca e depois em "Puxe" quando o peixe aparecer.</p>
+        <div id="pesca-area">
+            <img src="temp_vara.png" onclick="baixarLinha()">
+            <button id="botao-puxe" onclick="puxarLinha()" disabled>Puxe</button>
+        </div>
+        <p id="status-peixe">Peixes coletados: 0</p>
+        <button id="next-peixe" onclick="fecharMiniGame('peixe')" style="display: none;">Próximo</button>
+    </div>
+
+    <!-- Mini-game Plantação -->
+    <div id="mini-game-plantacao" class="mini-game" style="display:none;">
+        <h2>Mini-game da Plantação</h2>
+        <p>Arraste sementes para a terra e clique para colher quando crescerem.</p>
+        <div id="area-plantacao">
+            <div class="sementes">
+                <img src="temp_semente1.png" class="semente" draggable="true" ondragstart="drag(event)">
+            </div>
+            <div class="terra" ondrop="plantar(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <p id="status-plantacao">Plantas colhidas: 0</p>
+        <button id="next-plantacao" onclick="fecharMiniGame('plantacao')" style="display: none;">Próximo</button>
     </div>
 
     <script src="script.js"></script>
