@@ -1,10 +1,10 @@
-/* style.css */
+/* style.css completo */
 
-body {
+body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Press Start 2P', cursive, sans-serif;
-    background-color: #eef6e5;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #d4f4c1;
     overflow: hidden;
 }
 
@@ -13,104 +13,224 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    background-color: #d4edda;
-    text-align: center;
+    align-items: center;
+    background-color: #b2e59f;
+}
+
+#game-title {
+    font-size: 2rem;
+    color: #2d5e1f;
+    text-shadow: 2px 2px #ffffff;
+    margin-bottom: 20px;
 }
 
 button {
-    font-family: inherit;
-    font-size: 14px;
+    font-size: 1rem;
     padding: 10px 20px;
     margin: 10px;
-    cursor: pointer;
-    background-color: #6c757d;
-    color: white;
+    background-color: #5ebf3d;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px #3e6e29;
+}
+
+button:hover {
+    background-color: #4ea32f;
 }
 
 #characters {
     display: flex;
-    justify-content: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 .character {
-    border: 2px solid #6c757d;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
-    border-radius: 8px;
-    background-color: #fff;
+    border: 2px solid transparent;
+    padding: 10px;
 }
 
 .character:hover {
-    background-color: #dfe6e9;
+    border-color: #2d5e1f;
+    background-color: #e4fdd7;
+}
+
+#player-name {
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #999;
 }
 
 #farm {
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    padding-top: 40px;
 }
 
 .cercado {
-    width: 150px;
-    height: 150px;
-    background-color: #b2dfdb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px dashed #00695c;
+    background-color: #fff6d5;
+    padding: 20px;
+    border: 2px dashed #a67c00;
+    width: 250px;
+    text-align: center;
+    font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
 }
 
 .mini-game {
+    background-color: #e9ffe4;
     width: 100vw;
     height: 100vh;
-    background-color: #fff3cd;
+    padding: 20px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
-#ninhos img, #plantas img {
-    width: 100px;
-    height: auto;
-    margin: 10px;
-    cursor: pointer;
-}
-
-#area-ovelha, #area-plantacao, #area-vaca, #area-pesca {
+#ninhos {
     display: flex;
     gap: 20px;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    flex-wrap: wrap;
 }
 
-#tesoura, #balde, #botao-puxar, #regador, #sementes img, #vara {
+.ninho {
     width: 80px;
+    height: auto;
     cursor: pointer;
 }
 
-#plantas img {
-    border: 2px solid #4caf50;
-    border-radius: 8px;
-    padding: 5px;
+#area-ovelha {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 30px;
 }
 
-input[type="text"] {
-    font-family: inherit;
-    font-size: 14px;
-    padding: 5px;
-    margin: 10px;
+#tesoura {
+    width: 60px;
+    cursor: grab;
+}
+
+#ovelha-img {
+    width: 120px;
+}
+
+/* Minigame Plantação */
+#plantacao-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.semente-btn {
+    background-color: #d4a373;
+    border: none;
+    padding: 10px;
+    color: white;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.semente-btn:hover {
+    background-color: #b37a4b;
+}
+
+.planta {
+    width: 64px;
+    height: 64px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#plantacao-grid {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 320px;
+    justify-content: center;
+}
+
+/* Mini-game Vaca */
+#vaca-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#tetas {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.teta {
+    width: 40px;
+    height: 40px;
+    background-color: pink;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#balde {
+    width: 64px;
+    height: 64px;
+    background-image: url('temp_balde.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+}
+
+/* Mini-game Peixe */
+#pesca-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#aguarde-barra {
+    width: 100px;
+    height: 10px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+#aguarde-status {
+    background-color: #6ab04c;
+    height: 10px;
+    width: 0;
+}
+
+/* Mini-game Porcos */
+#porco-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#comedouro {
+    width: 120px;
+    height: 64px;
+    background-color: #f2c94c;
+    border: 2px solid #e4b73c;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
