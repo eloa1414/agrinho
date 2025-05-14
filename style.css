@@ -1,188 +1,116 @@
-/* Estilo global */
+/* style.css */
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Press Start 2P', cursive;
-    background-color: #87ceeb;
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    background-color: #eef6e5;
     overflow: hidden;
 }
 
-/* Tela inicial */
-.tela {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.screen {
+    width: 100vw;
     height: 100vh;
-}
-
-#tela-inicial h1 {
-    font-size: 3em;
-    color: #ffffff;
-    margin-bottom: 20px;
-}
-
-.botao {
-    background-color: #4CAF50;
-    color: white;
-    font-size: 1.5em;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.botao:hover {
-    background-color: #45a049;
-}
-
-/* Tela de escolha de personagem */
-#tela-personagem {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-color: #d4edda;
+    text-align: center;
 }
 
-#tela-personagem .personagens {
+button {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+#characters {
     display: flex;
-    margin-bottom: 20px;
+    justify-content: center;
+    gap: 30px;
 }
 
-.personagem {
+.character {
+    border: 2px solid #6c757d;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.character:hover {
+    background-color: #dfe6e9;
+}
+
+#farm {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.cercado {
+    width: 150px;
+    height: 150px;
+    background-color: #b2dfdb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px dashed #00695c;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.mini-game {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff3cd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#ninhos img, #plantas img {
+    width: 100px;
+    height: auto;
     margin: 10px;
     cursor: pointer;
 }
 
-.personagem img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
-input[type="text"] {
-    padding: 10px;
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    border-radius: 5px;
-}
-
-.botoes {
+#area-ovelha, #area-plantacao, #area-vaca, #area-pesca {
     display: flex;
-    justify-content: space-between;
-    width: 200px;
-}
-
-/* Tela de carregamento */
-#tela-carregando {
-    display: flex;
-    justify-content: center;
+    gap: 20px;
     align-items: center;
-    height: 100vh;
-    font-size: 2em;
-    color: #ffffff;
-}
-
-/* Tela do jogo */
-#tela-jogo {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    background-color: #c6e8b8;
-    height: 100vh;
-    width: 100%;
+    margin: 20px;
+    flex-wrap: wrap;
 }
 
-#mapa {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* Elementos do mapa */
-#celeiro {
-    width: 100px;
-    height: 100px;
-    background-image: url('celeiro.png');
-    background-size: cover;
-    position: absolute;
-    left: 10%;
-    top: 10%;
-}
-
-#cercado-vacas, #cercado-ovelhas, #cercado-porcos, #cercado-galinhas {
-    width: 120px;
-    height: 120px;
-    background-color: #8B4513;
-    border-radius: 10px;
-    position: absolute;
-}
-
-#cercado-vacas {
-    top: 20%;
-    left: 30%;
-}
-
-#cercado-ovelhas {
-    top: 40%;
-    left: 50%;
-}
-
-#cercado-porcos {
-    top: 60%;
-    left: 70%;
-}
-
-#cercado-galinhas {
-    top: 80%;
-    left: 30%;
-}
-
-#plantacao {
-    width: 300px;
-    height: 100px;
-    background-color: #228B22;
-    position: absolute;
-    bottom: 10%;
-    left: 40%;
-}
-
-#personagem {
-    width: 50px;
-    height: 50px;
-    background-image: url('personagem.png');
-    background-size: cover;
-    position: absolute;
-    bottom: 20%;
-    left: 10%;
-    transition: all 0.2s;
-}
-
-/* Caminhonete */
-#caminhonete {
-    width: 60px;
-    height: 30px;
-    background-image: url('caminhonete.png');
-    background-size: cover;
-    position: absolute;
-    bottom: 5%;
-    left: 10%;
-}
-
-/* Botões do jogo */
-#botao-desafio {
-    position: absolute;
-    top: 10%;
-    left: 40%;
-    background-color: #FFD700;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 5px;
+#tesoura, #balde, #botao-puxar, #regador, #sementes img, #vara {
+    width: 80px;
     cursor: pointer;
 }
 
-#botao-desafio:hover {
-    background-color: #ffcc00;
+#plantas img {
+    border: 2px solid #4caf50;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+input[type="text"] {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
